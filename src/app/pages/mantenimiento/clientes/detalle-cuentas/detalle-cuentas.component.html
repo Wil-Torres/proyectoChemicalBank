@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-9 justify-content-md-center">
+      <form [formGroup]="forma" name="forma" (ngSubmit)="guardar()" novalidate>
+        <div ng-if="esEditable" class="row">
+          <div class="col-md-12 col-xs-12 pr-0">
+            <button class="btn btn-sm btn-primary float-right" type="button" (click)="guardar()" title="Guardar cuenta">
+              <i class="fa fa-check"></i>
+            </button>
+            <button class="btn btn-sm btn-danger float-right mr-1" type="button" (click)="limpiar()" tabindex="-1"
+              title="Cancelar cambios">
+              <i class="fa fa-ban"></i>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="font-weight-bold">Tipo de Cuenta</label>
+              <select name="tipoCuenta" id="tipoCuenta" formControlName="tipoCuentaId"
+                (ngModelChange)="alCambiarTipoCuenta(forma.value.tipoCuentaId)">
+                <option *ngFor="let opcion of tiposCuenta" [value]="opcion.id">{{opcion.descripcion}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-3" gtRequerido>
+            <div class="form-group">
+              <label class="font-weight-bold">Moneda</label>
+              <select name="tipoCuenta" id="tipoCuenta" formControlName="monedaId"
+                (ngModelChange)="alCambiarMoneda(forma.value.monedaId)">
+                <option *ngFor="let opcion of monedas" [value]="opcion.id">{{opcion.descripcion}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table table-striped gt-tabla">
+              <thead class="bg-primary text-light">
+                <tr>
+                  <th class="text-center gt-w-75">Tipo de Cuenta</th>
+                  <th>Numero de cuenta</th>
+                  <th class="gt-w-100">Moneda</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cuenta of cuentas">
+                  <td> {{cuenta.tipoCuenta.descripcion}}</td>
+                  <td> {{cuenta.numeroCuenta}}</td>
+                  <td class="text-right">{{cuenta.moneda.descripcion}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
