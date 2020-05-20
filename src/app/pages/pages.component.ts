@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/service.index';
 
 @Component({
   selector: 'app-pages',
@@ -17,7 +18,7 @@ export class PagesComponent implements OnInit {
   }
   
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private srvAuth: AuthService) {
     let user = JSON.parse(localStorage.getItem('usuarioLogeado'));
     if (!user) {
       this._logeado = false;
@@ -28,6 +29,15 @@ export class PagesComponent implements OnInit {
 
    login(){
     this.route.navigate(['/login']);
+   }
+
+   cerrarSesion(){
+     this.srvAuth.signOut().then(() => {
+      localStorage.removeItem('usuarioLogeado');
+      this.route.navigate(['/']);
+      location.reload();
+     })
+
    }
 
   ngOnInit() {

@@ -20,13 +20,13 @@
             Mantenimiento
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"  routerLink="/lista-clientes">Clientes</a>
-            <a class="dropdown-item"   routerLink="/tipo-cuenta">Tipo de Cuenta</a>
+            <a class="dropdown-item" routerLink="/lista-clientes">Clientes</a>
+            <a class="dropdown-item" routerLink="/tipo-cuenta">Tipo de Cuenta</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item"   routerLink="/transaccion">Transaccion</a>
+            <a class="dropdown-item" routerLink="/transaccion">Transaccion</a>
           </div>
         </li>
-        <li class="nav-item dropdown"  *ngIf="logeado">
+        <li class="nav-item dropdown" *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Movimientos
@@ -39,7 +39,7 @@
             <a class="dropdown-item" href="#">Prestamos</a>
           </div>
         </li>
-        <li class="nav-item dropdown"  *ngIf="logeado">
+        <li class="nav-item dropdown" *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Reportes
@@ -50,11 +50,15 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius: 50%;" type="submit"  *ngIf="logeado">
+      <form class="form-inline my-2 my-lg-0 nav-item dropdown">
+        <button class="btn btn-outline-success my-2 my-sm-0 nav-link dropdown-toggle" style="border-radius: 50%;" id="navbarDropdown"
+          type="submit" *ngIf="logeado" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle"></i>
         </button>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="button"  *ngIf="!logeado" (click)="login()">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="cerrarSesion()">Salir</a>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0 " type="button" *ngIf="!logeado" (click)="login()">
           Iniciar sesión
         </button>
       </form>
