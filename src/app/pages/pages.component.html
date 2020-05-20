@@ -14,7 +14,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Mantenimiento
@@ -26,7 +26,7 @@
             <a class="dropdown-item"   routerLink="/transaccion">Transaccion</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown"  *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Movimientos
@@ -39,7 +39,7 @@
             <a class="dropdown-item" href="#">Prestamos</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown"  *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Reportes
@@ -51,8 +51,11 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius: 50%;" type="submit">
+        <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius: 50%;" type="submit"  *ngIf="logeado">
           <i class="fas fa-user-circle"></i>
+        </button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="button"  *ngIf="!logeado" (click)="login()">
+          Iniciar sesión
         </button>
       </form>
     </div>

@@ -8,16 +8,21 @@ import { Router } from '@angular/router';
 })
 export class ListaClienteComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router) {
+    let user = JSON.parse(localStorage.getItem('usuarioLogeado'));
+    if (!user) {
+      this.route.navigate(['/login']);
+    }
+  }
 
   ngOnInit() {
   }
 
-  nuevo (){
+  nuevo() {
     this.route.navigate(['/cliente-nuevo']);
   }
-  edicion(id:string){
-    this.route.navigate(['/cliente-nuevo',id]);
+  edicion(id: string) {
+    this.route.navigate(['/cliente-nuevo', id]);
   }
 
 }

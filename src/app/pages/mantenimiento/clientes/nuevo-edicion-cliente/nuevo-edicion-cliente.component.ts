@@ -11,59 +11,64 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NuevoEdicionClienteComponent implements OnInit {
 
-  
-  private _forma : FormGroup;
-  
-  private _objId : string = this.aroute.snapshot.paramMap.get('id');
-  public get objId() : string {
+
+  private _forma: FormGroup;
+
+  private _objId: string = this.aroute.snapshot.paramMap.get('id');
+  public get objId(): string {
     return this._objId;
   }
-  public set objId(v : string) {
+  public set objId(v: string) {
     this._objId = v;
   }
-  
-  public get forma() : FormGroup {
+
+  public get forma(): FormGroup {
     return this._forma;
   }
-  public set forma(v : FormGroup) {
+  public set forma(v: FormGroup) {
     this._forma = v;
   }
-  
-  constructor(private builder: FormBuilder, private srv: ClienteService, private route: Router, private aroute: ActivatedRoute) { }
+
+  constructor(private builder: FormBuilder, private srv: ClienteService, private route: Router, private aroute: ActivatedRoute) {
+    let user = JSON.parse(localStorage.getItem('usuarioLogeado'));
+    if (!user) {
+      this.route.navigate(['/login']);
+    }
+  }
 
   ngOnInit() {
     this.objInit();
-    if(this._objId.length !== 0){
+    if (this._objId.length !== 0) {
       this.buscarCliente(this.objId);
     }
   }
 
-  objInit(){
+  objInit() {
     this.forma = this.builder.group({
       id: null,
-      codigo:null,
+      codigo: null,
       nombres: null,
-      apellidos:null,
+      apellidos: null,
       identificacion: null,
       fechaNacimiento: null
     });
   }
 
-  buscarCliente(clienteId: string){
+  buscarCliente(clienteId: string) {
     this.srv.obtenerCliente(clienteId).subscribe(cliente => {
-      this.forma.patchValue(cliente,{emitEvent:false});
+      this.forma.patchValue(cliente, { emitEvent: false });
     });
   }
 
-  guardar(){
+  guardar() {
     this.srv.agregarCliente(this.forma.getRawValue()).then(nuevoCliente => {
-      nuevoCliente.update({id: nuevoCliente.id}).then(()=>{
-        swal('Registro creado','Nuevo cliente','success').then(() => {
-          this.route.navigate(['/cliente-edicion',nuevoCliente.id])
+      nuevoCliente.update({ id: nuevoCliente.id }).then(() => {
+        swal('Registro creado', 'Nuevo cliente', 'success').then(() => {
+          this.route.navigate(['/cliente-edicion', nuevoCliente.id])
         })
       });
     }).catch(err => {
-      swal('Error',err,'danger').then(() => {});
+      swal('Error', err, 'danger').then(() => { });
     });
 
   }

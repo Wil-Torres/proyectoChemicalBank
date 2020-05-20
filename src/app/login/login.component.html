@@ -2,7 +2,7 @@
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
 <section id="wrapper" class="login-register login-sidebar"
-    style="background-image:url(../assets/images/background/login-register.jpg);">
+    style="background-image:url(../../assets/Banco-de-guatemala-.jpg);">
     <div class="login-box card">
         <div class="card-body">
             <form ngNativeValidate class="form-horizontal form-material" id="loginform" (ngSubmit)="ingresar()">
@@ -84,3 +84,40 @@
 <!-- ============================================================== -->
 <!-- End Wrapper -->
 <!-- ============================================================== -->
+
+<div class="container h-100" style="padding-top: 10%;opacity: 0.8;">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="../../assets/descarga (2).jpg"
+                        class="brand_logo" alt="Logo">
+                    
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <form ngNativeValidate class="form-horizontal form-material" id="loginform" (ngSubmit)="ingresar()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="" class="form-control input_user" required
+                            placeholder="Nombre de usuario" [(ngModel)]="objeto.user"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="" class="form-control input_pass" required placeholder="Password"
+                            [(ngModel)]="objeto.password" [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button type="submit" name="button" class="btn login_btn">Iniciar sesiòn</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
