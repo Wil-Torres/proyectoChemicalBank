@@ -33,7 +33,7 @@ export class NuevoEdicionClienteComponent implements OnInit {
 
   ngOnInit() {
     this.objInit();
-    if(this._objId.length !== 0){
+    if(this._objId){
       this.buscarCliente(this.objId);
     }
   }
@@ -45,7 +45,8 @@ export class NuevoEdicionClienteComponent implements OnInit {
       nombres: null,
       apellidos:null,
       identificacion: null,
-      fechaNacimiento: null
+      fechaNacimiento: null,
+      estadoCivil: null
     });
   }
 
@@ -56,16 +57,43 @@ export class NuevoEdicionClienteComponent implements OnInit {
   }
 
   guardar(){
-    this.srv.agregarCliente(this.forma.getRawValue()).then(nuevoCliente => {
-      nuevoCliente.update({id: nuevoCliente.id}).then(()=>{
-        swal('Registro creado','Nuevo cliente','success').then(() => {
-          this.route.navigate(['/cliente-edicion',nuevoCliente.id])
-        })
-      });
-    }).catch(err => {
-      swal('Error',err,'danger').then(() => {});
-    });
 
+    if ((this._forma.value.nombres == null) || (this._forma.value.apellidos == null) || (this._forma.value.codigo == null)
+    || (this._forma.value.identificacion == null) || (this._forma.value.fechaNacimiento == null) || this._forma.value.estadoCivil == null) {
+      swal('Advertencia','Falta datos que llenar.','warning')
+      return;
+    }
+
+    if (!this.objId){
+      this.srv.agregarCliente(this.forma.getRawValue()).then(nuevoCliente => {
+        nuevoCliente.update({id: nuevoCliente.id}).then(()=>{
+          swal('Registro creado','Nuevo cliente','success').then(() => {
+            this.route.navigate(['/cliente-edicion',nuevoCliente.id])
+          })
+        });
+      }).catch(err => {
+        swal('Error',err,'danger').then(() => {});
+      });
+
+    } else {
+      this.srv.actualizarCliente(this.forma.getRawValue()).then(nuevoCliente => {
+        
+          swal('Registro Actualizado','exitoso','success').then(() => {});
+        
+      }).catch(err => {
+        swal('Error',err,'danger').then(() => {});
+      });
+    }
+    
+
+  }
+
+  cancelar() {
+    this._forma.reset();
+  }
+
+  regresar() {
+    this.route.navigate(['/lista-clientes']);
   }
 
 }

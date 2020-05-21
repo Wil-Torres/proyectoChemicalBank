@@ -87,22 +87,24 @@ export class DetalleCuentasComponent implements OnInit {
     });
   }
 
-  alCambiarMoneda(id: any) {
+  alCambiarMoneda(id: number) {
+    console.log(id)
     let moneda = this.monedas.find(elemt => {
-      return elemt.id === id;
+      return elemt.id == id;
     })
     if (moneda){
-      this.forma.patchValue({moneda});
+      this.forma.patchValue({moneda: moneda});
     }
 
   }
 
-  alCambiarTipoCuenta(id:any) {
+  alCambiarTipoCuenta(id:number) {
+    console.log(id)
     let tipoCuenta = this.tiposCuenta.find(elemt => {
-      return elemt.id === id;
+      return elemt.id == id;
     })
     if (tipoCuenta){
-      this.forma.patchValue({tipoCuenta});
+      this.forma.patchValue({tipoCuenta: tipoCuenta});
     }
 
 
@@ -112,7 +114,7 @@ export class DetalleCuentasComponent implements OnInit {
     this.forma.patchValue({numeroCuenta: this.srv.obtenerCuenta()})
     this.srv.agregarCuenta(this._objId,this.forma.getRawValue()).then(nuevoCliente => {
       nuevoCliente.update({ id: nuevoCliente.id }).then(() => {
-        swal('Registro creado', 'Nuevo cliente', 'success').then(() => {
+        swal('Registro creado', 'Nueva cuenta', 'success').then(() => {
           this.route.navigate(['/cliente-edicion', nuevoCliente.id])
         })
       });
@@ -120,6 +122,10 @@ export class DetalleCuentasComponent implements OnInit {
       swal('Error', err, 'danger').then(() => { });
     });
 
+  }
+
+  limpiar() {
+    this.forma.reset();
   }
 
 

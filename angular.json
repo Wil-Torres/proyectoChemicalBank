@@ -31,7 +31,6 @@
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/@fortawesome/fontawesome-free/js/all.js"
-
             ]
           },
           "configurations": {
@@ -144,5 +143,8 @@
       }
     }
   },
-  "defaultProject": "proyectoChemicalBank"
+  "defaultProject": "proyectoChemicalBank",
+  "cli": {
+    "analytics": "b60c0990-4d57-4177-9ff3-c2b8c0f467e3"
+  }
 }

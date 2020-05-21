@@ -31,16 +31,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-            <td>#</td>
-            <td>Nombre</td>
-            <td>Apellidos</td>
-            <td>Estado Civil</td>
-            <td>Identificacion</td>
-            <td>Estado</td>
-            <td>Email</td>
+        <tr *ngFor="let cliente of clientes; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{cliente.nombres}}</td>
+            <td>{{cliente.apellidos}}</td>
+            <td>{{cliente.estadoCivil == 1 ? 'Soltero' : cliente.estadoCivil == 2 ? 'Casado' : cliente.estadoCivil == 3 ? 'Viudo' : 'Separado'}}</td>
+            <td>{{cliente.identificacion}}</td>
+            <td>{{cliente?.estado}}</td>
+            <td>{{cliente?.email}}</td>
             <td>
-              <button class="btn btn-info btn-sm" (click)="edicion('1')"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-info btn-sm" (click)="edicion(cliente.id)"><i class="fas fa-edit"></i></button>
             </td>
         </tr>
       </tbody>

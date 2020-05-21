@@ -1,59 +1,72 @@
 <br>
-<form [formGroup]="forma" name="forma" (ngSubmit)="guardar()" novalidate>
-  <div class="row">
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary float-right">
-        <i class="fas fa-save"></i>
-      </button>
-      <button type="button" class="btn btn-danger float-right" (click)="cancelar()">
-        <i class="fas fa-ban"></i>
-      </button>
-      <button type="button" class="btn btn-default float-right" (click)="regresar()">
-        <i class="fas fa-arrow-left"></i>
-      </button>
-    </div>
-  </div>
-  <div class="container-fluid text-center">
-    <div class="d-flex justify-content-center pt-2">
-      <h2 class="text-primary">{{ 'MANTENIMIENTO DE CLIENTES' }}</h2>
-    </div>
-    <div class="d-flex justify-content-center">
-      <h5>{{ 'Creacion' }}</h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-1">
-      <div class="form-group">
-        <label for="codigo">Código</label>
-        <input type="text" class="form-control" formControlName="codigo">
+<div class="col-12">
+  <form [formGroup]="forma" name="forma" (ngSubmit)="guardar()" novalidate>
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary float-right">
+          <i class="fas fa-save"></i>
+        </button>
+        <button type="button" class="btn btn-danger float-right" (click)="cancelar()">
+          <i class="fas fa-ban"></i>
+        </button>
+        <button type="button" class="btn btn-default float-right" (click)="regresar()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
       </div>
+    </div>
+    <div class="container-fluid text-center">
+      <div class="d-flex justify-content-center pt-2">
+        <h2 class="text-primary">{{ 'MANTENIMIENTO DE CLIENTES' }}</h2>
+      </div>
+      <div class="d-flex justify-content-center">
+        <h5>{{ 'Creacion' }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1 mb-1 pl-0">
+        <div class="form-group">
+          <label for="codigo">Código</label>
+          <input type="text" class="form-control" formControlName="codigo">
+        </div>
 
-    </div>
-    <div class="col-3">
-      <div class="form-group">
-        <label for="nombres">Nombre</label>
-        <input type="text" class="form-control" formControlName="nombres">
+      </div>
+      <div class="col-3 pl-0">
+        <div class="form-group">
+          <label for="nombres">Nombre</label>
+          <input type="text" class="form-control" formControlName="nombres">
+        </div>
+      </div>
+      <div class="col-3  pl-0">
+        <div class="form-group">
+          <label for="apellidos">Apellidos</label>
+          <input type="text" class="form-control" formControlName="apellidos">
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <label for="identifcacion">Identificacion</label>
+          <input type="text" class="form-control" formControlName="identificacion">
+        </div>
+      </div>
+      <div class="col-2 pl-0">
+        <div class="form-group">
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+          <input type="text" class="form-control" formControlName="fechaNacimiento">
+        </div>
+      </div>
+      <div class="col-1 pl-0">
+        <div class="form-group">
+          <label for="estadoCivil">Est. Civil</label>
+          <select name="estadoCivil" id="estadoCivil" class="form-control" formControlName="estadoCivil">
+            <option value="1">Soltero</option>
+            <option value="2">Casado</option>
+            <option value="3">Viudo</option>
+          </select>
+        </div>
       </div>
     </div>
-    <div class="col-3">
-      <div class="form-group">
-        <label for="apellidos">Apellidos</label>
-        <input type="text" class="form-control" formControlName="apellidos">
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="form-group">
-        <label for="identifcacion">Identificacion</label>
-        <input type="text" class="form-control" formControlName="identificacion">
-      </div>
-    </div>
-    <div class="col-2">
-      <div class="form-group">
-        <label for="fechaNacimiento">Fecha de Nacimiento</label>
-        <input type="text" class="form-control" formControlName="fechaNacimiento">
-      </div>
-    </div>
+  </form>
+  <div *ngIf="objId != null">
+    <app-detalle-cuentas></app-detalle-cuentas>
   </div>
-</form>
-
-<app-detalle-cuentas></app-detalle-cuentas>
+</div>
