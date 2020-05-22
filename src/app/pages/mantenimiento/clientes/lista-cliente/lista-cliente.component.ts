@@ -19,7 +19,12 @@ export class ListaClienteComponent implements OnInit {
     this._clientes = v;
   }
   
-  constructor(private route: Router, private srv:  ClienteService) { }
+  constructor(private route: Router, private srv:  ClienteService) { 
+    let user = JSON.parse(localStorage.getItem('usuarioLogeado'));
+    if (!user) {
+      this.route.navigate(['/login']);
+    }
+  }
 
   ngOnInit() {
     this.srv.obtenerClientes().subscribe(cliente => {
@@ -32,7 +37,7 @@ export class ListaClienteComponent implements OnInit {
     this.route.navigate(['/cliente-nuevo']);
   }
   edicion(id:string){
-    this.route.navigate(['/cliente-edicion',id]);
+    this.route.navigate(['//cliente-edicion',id]);
   }
 
 }

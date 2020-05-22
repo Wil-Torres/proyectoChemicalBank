@@ -14,19 +14,19 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Mantenimiento
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"  routerLink="/lista-clientes">Clientes</a>
-            <a class="dropdown-item"   routerLink="/tipo-cuenta">Tipo de Cuenta</a>
+            <a class="dropdown-item" routerLink="/lista-clientes">Clientes</a>
+            <a class="dropdown-item" routerLink="/tipo-cuenta">Tipo de Cuenta</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item"   routerLink="/transaccion">Transaccion</a>
+            <a class="dropdown-item" routerLink="/transaccion">Transaccion</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Movimientos
@@ -36,10 +36,10 @@
             <a class="dropdown-item" href="#">Cheques</a>
             <a class="dropdown-item" href="#">Depoditos</a>
             <a class="dropdown-item" href="#">Pago de servicios</a>
-            <a class="dropdown-item" href="#">Prestamos</a>
+            <a class="dropdown-item" routerLink="/simulador-credito">Prestamos</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="logeado">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Reportes
@@ -50,9 +50,16 @@
           </div>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" style="border-radius: 50%;" type="submit">
+      <form class="form-inline my-2 my-lg-0 nav-item dropdown">
+        <button class="btn btn-outline-success my-2 my-sm-0 nav-link dropdown-toggle" style="border-radius: 50%;" id="navbarDropdown"
+          type="submit" *ngIf="logeado" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" (click)="cerrarSesion()">Salir</a>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0 " type="button" *ngIf="!logeado" (click)="login()">
+          Iniciar sesión
         </button>
       </form>
     </div>

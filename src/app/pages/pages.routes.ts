@@ -5,6 +5,7 @@ import { ListaClienteComponent } from "./mantenimiento/clientes/lista-cliente/li
 import { NuevoEdicionClienteComponent } from "./mantenimiento/clientes/nuevo-edicion-cliente/nuevo-edicion-cliente.component";
 import { NuevoEdicionTipoCuentaComponent } from "./mantenimiento/tipoCuenta/nuevo-edicion-tipo-cuenta/nuevo-edicion-tipo-cuenta.component";
 import { NuevoEdicionTransaccionComponent } from "./mantenimiento/transaccion/nuevo-edicion-transaccion/nuevo-edicion-transaccion.component";
+import { NuevoEdicionPrestamoComponent } from "./movimiento/prestamo/nuevo-edicion-prestamo/nuevo-edicion-prestamo.component";
 
 
 const pagesRoutes: Routes = [
@@ -18,6 +19,7 @@ const pagesRoutes: Routes = [
             {path: 'cliente-edicion/:id', component: NuevoEdicionClienteComponent, data:{titulo: 'Edicion'}},
             {path: 'tipo-cuenta', component: NuevoEdicionTipoCuentaComponent, data:{titulo: 'Pagina Principal'}},
             {path: 'transaccion', component: NuevoEdicionTransaccionComponent, data:{titulo: 'Pagina Principal'}},
+            {path: 'simulador-credito', component: NuevoEdicionPrestamoComponent, data:{titulo: 'Pagina Principal'}},
             /* Usuarios */
             // {path: 'usuarios', component: ListaUsuariosComponent, data:{titulo: 'Usuarios'}},
             // {path: 'perfil', component: PerfilComponent, data:{titulo: 'Perfil'}},
