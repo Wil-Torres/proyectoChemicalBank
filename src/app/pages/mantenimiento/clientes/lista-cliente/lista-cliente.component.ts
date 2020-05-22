@@ -32,7 +32,7 @@ export class ListaClienteComponent implements OnInit {
     this.route.navigate(['/cliente-nuevo']);
   }
   edicion(id:string){
-    this.route.navigate(['//cliente-edicion',id]);
+    this.route.navigate(['/cliente-edicion',id]);
   }
 
 }
